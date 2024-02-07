@@ -16,15 +16,15 @@
         <tr>
             <th scope="col">Product Name</th>
             <th scope="col">Quantity</th>
-            <th scope="col">Action</th> <!-- New column for the delete button -->
+            <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="product: ${products}">
-            <td th:text="${product.productName}"></td>
-            <td th:text="${product.productQuantity}"></td>
+            <td th:text="${product.productName}">Product Name</td>
+            <td th:text="${product.productQuantity}">Quantity</td>
             <td>
-                <!-- Add a delete button with a link to the delete endpoint -->
+                <a th:href="@{/product/edit/{productId}(productId=${product.productId})}" class="btn btn-info btn-sm">Edit</a>
                 <a th:href="@{/product/delete/{productId}(productId=${product.productId})}" class="btn btn-danger btn-sm">Delete</a>
             </td>
         </tr>
