@@ -7,7 +7,7 @@ Kelas : B
 
 Dalam implementasi dua fitur baru menggunakan Spring Boot, saya mengevaluasi standar penulisan kode yang telah dipelajari dalam modul ini. Berikut adalah prinsip-prinsip penulisan kode bersih dan praktik keamanan yang telah saya terapkan pada kode saya:
 
-### Prinsip-prinsip Penulisan Kode Bersih:
+### Prinsip-prinsip Penulisan Clean Code:
 Naming Conventions:
 1. Menggunakan nama variabel, fungsi, dan kelas yang deskriptif. Contoh: delete, edit
 2. Menyusun nama dengan format camelCase. Contoh: EditProduct.html
@@ -64,3 +64,8 @@ Unit Testing:
 
 Pembersihan Kode:
 1. Menghilangkan potongan kode yang tidak digunakan atau komentar yang tidak perlu.
+
+## Refleksi 2
+1. Setelah menulis unit test, saya cukup pusing karena walaupun sudah terbantu dengan pembuatan kode sebelumnya yang mengikuti kaidah clean code. Jumlah unit test bervariasi, minimal satu per fungsi atau tiap jenis return yang mungkin diberi fungsi. Pastikan unit test mencakup berbagai skenario. Code coverage membantu mengukur seberapa banyak kode yang diuji, bukan menjamin tidak adanya bug.
+
+2. Terkait functional test baru, perlu dievaluasi kebersihan kode. Duplikasi kode, setup yang tidak efisien, dan kurangnya struktur mungkin masalah. Untuk meningkatkan kebersihan, cek dan hapus duplikasi kode, pastikan setup efisien, dan struktur yang jelas.
