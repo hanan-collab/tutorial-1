@@ -24,11 +24,25 @@ public class ProductTest {
 
     @Test
     void testGetProductName() {
-        assertEquals("Sampo Cap Bambang", this.product.getProductName());
+        assertEquals("Product Jamur", this.product.getProductName());
     }
 
     @Test
     void testGetProductQuantity() {
         assertEquals(100, this.product.getProductQuantity());
+    }
+
+    @Test
+    void testGetProductNameAfterEdit() {
+        // Assume an edit operation has changed the product name
+        this.product.setProductName("New Product Name");
+        assertEquals("New Product Name", this.product.getProductName());
+    }
+
+    @Test
+    void testGetProductQuantityAfterEdit() {
+        // Assume an edit operation has changed the product quantity
+        this.product.setProductQuantity(200);
+        assertEquals(200, this.product.getProductQuantity());
     }
 }
