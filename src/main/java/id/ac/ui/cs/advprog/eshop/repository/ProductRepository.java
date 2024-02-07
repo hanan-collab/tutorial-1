@@ -16,14 +16,38 @@ public class ProductRepository {
         return product;
     }
 
-    public Iterator<Product> findAll(){
-        return productData.iterator();
+    public Iterator<Product> findAll() {
+        return new ArrayList<>(productData).iterator();
     }
 
     public Product delete(String productId) {
+        Product deletedProduct = null;
+        Iterator<Product> iterator = productData.iterator();
+        while (iterator.hasNext()) {
+            Product product = iterator.next();
+            if (product.getProductId().equals(productId)) {
+                iterator.remove();
+                deletedProduct = product;
+                break;
+            }
+        }
+        return deletedProduct; // Product with the specified ID was not found
+    }
+
+    public Product edit(String productId, Product updatedProduct) {
+        for (int i = 0; i < productData.size(); i++) {
+            Product product = productData.get(i);
+            if (product.getProductId().equals(productId)) {
+                productData.set(i, updatedProduct);
+                return updatedProduct;
+            }
+        }
+        return null; // Product with the specified ID was not found
+    }
+
+    public Product findById(String productId) {
         for (Product product : productData) {
             if (product.getProductId().equals(productId)) {
-                productData.remove(product);
                 return product;
             }
         }
