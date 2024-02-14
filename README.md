@@ -19,11 +19,8 @@ Kelas : B
 
         assertNull(result);
     }
-```  
-2. Untuk permasalahan _`This utility class has a non-private constructor`_ terkait sekuritas PMD, saya menambahkan pada `EshopApplication.java` kode,
 ```
-@SuppressWarnings("java:S1118")
-```
+
 ### CI/CD Workflow
 Saat ini, implementasi proyek telah memenuhi dasar CI/CD. Dengan GitHub Workflows, setiap push perubahan kode akan **menjalankan unit test otomatis dan proses deployment**. Uji coba melibatkan penggunaan `ci.yml` dan _testing_ kode dengan `PMD`. Setelah itu, kode digabungkan ke dalam branch utama dan diunggah secara otomatis ke PaaS Koyeb menggunakan `scorecard.yml`.
 
