@@ -21,17 +21,15 @@ public class ProductRepository {
     }
 
     public Product delete(String productId) {
-        Product deletedProduct = null;
         Iterator<Product> iterator = productData.iterator();
         while (iterator.hasNext()) {
             Product product = iterator.next();
             if (product.getProductId().equals(productId)) {
                 iterator.remove();
-                deletedProduct = product;
-                break;
+                return product; // Product with the specified ID found and deleted
             }
         }
-        return deletedProduct; // Product with the specified ID was not found
+        return null; // In case the list is empty or product not found
     }
 
     public Product edit(String productId, Product updatedProduct) {
@@ -39,18 +37,18 @@ public class ProductRepository {
             Product product = productData.get(i);
             if (product.getProductId().equals(productId)) {
                 productData.set(i, updatedProduct);
-                return updatedProduct;
+                return updatedProduct; // Product with the specified ID found and updated
             }
         }
-        return null; // Product with the specified ID was not found
+        return null; // In case the list is empty or product not found
     }
 
     public Product findById(String productId) {
         for (Product product : productData) {
             if (product.getProductId().equals(productId)) {
-                return product;
+                return product; // Product with the specified ID found
             }
         }
-        return null; // Product with the specified ID was not found
+        return null; // In case the list is empty or product not found
     }
 }
