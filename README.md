@@ -3,6 +3,30 @@ NPM : 2206081824
 Kelas : B
 
 # Tutorial 1
+
+## Refleksi 2
+### List Fixed Code Quality Issue's
+1. Saya menambahkan unit test ada beberapa function yang sudah terdapat test namun masih ada missed pipeline, berikut salah satu contoh test untuk mencover kasus else pada function edit di `ProductRepository.java`
+```
+@Test
+    void testEditProductNotFound() {
+        ProductRepository productRepository = new ProductRepository();
+        String productId = "nonexistent-id";
+        Product updatedProduct = new Product();
+        updatedProduct.setProductId("some-id");
+
+        Product result = productRepository.edit(productId, updatedProduct);
+
+        assertNull(result);
+    }
+```  
+2. Untuk permasalahan _`This utility class has a non-private constructor`_ terkait sekuritas PMD, saya menambahkan pada `EshopApplication.java` kode,
+```
+@SuppressWarnings("java:S1118")
+```
+### CI/CD Workflow
+Saat ini, implementasi proyek telah memenuhi dasar CI/CD. Dengan GitHub Workflows, setiap push perubahan kode akan **menjalankan unit test otomatis dan proses deployment**. Uji coba melibatkan penggunaan `ci.yml` dan _testing_ kode dengan `PMD`. Setelah itu, kode digabungkan ke dalam branch utama dan diunggah secara otomatis ke PaaS Koyeb menggunakan `scorecard.yml`.
+
 ## Refleksi 1
 
 Dalam implementasi dua fitur baru menggunakan Spring Boot, saya mengevaluasi standar penulisan kode yang telah dipelajari dalam modul ini. Berikut adalah prinsip-prinsip penulisan kode bersih dan praktik keamanan yang telah saya terapkan pada kode saya:
