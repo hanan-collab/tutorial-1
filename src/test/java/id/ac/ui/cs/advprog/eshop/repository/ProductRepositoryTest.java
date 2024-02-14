@@ -107,6 +107,15 @@ public class ProductRepositoryTest {
     }
 
     @Test
+    void testDeleteWhenListIsEmpty() {
+        ProductRepository productRepository = new ProductRepository();
+
+        Product deletedProduct = productRepository.delete("someProductId");
+
+        assertNull(deletedProduct, "Deleting from an empty list should return null");
+    }
+
+    @Test
     void testFindById() {
         Product product = new Product();
         product.setProductId("eb558e9f-1c39-460e-8860-71af6af63bd6");
@@ -120,5 +129,17 @@ public class ProductRepositoryTest {
         assertEquals(product.getProductId(), foundProduct.getProductId());
         assertEquals(product.getProductName(), foundProduct.getProductName());
         assertEquals(product.getProductQuantity(), foundProduct.getProductQuantity());
+    }
+
+    @Test
+    void testEditProductNotFound() {
+        ProductRepository productRepository = new ProductRepository();
+        String productId = "nonexistent-id";
+        Product updatedProduct = new Product();
+        updatedProduct.setProductId("some-id");
+
+        Product result = productRepository.edit(productId, updatedProduct);
+
+        assertNull(result);
     }
 }

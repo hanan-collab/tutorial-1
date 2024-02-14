@@ -105,14 +105,11 @@ class ProductControllerTest {
 
     @Test
     void testDeleteProductNotFound() {
-        // Arrange
         String productId = UUID.randomUUID().toString();
         when(productService.delete(productId)).thenReturn(null);
 
-        // Act
         String viewName = productController.deleteProduct(productId, model);
 
-        // Assert
         verify(productService, times(1)).delete(productId);
         assertNull(model.getAttribute("deletedProduct"));
         assertEquals("redirect:/product/list", viewName);
